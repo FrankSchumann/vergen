@@ -8,55 +8,35 @@ import java.nio.file.StandardOpenOption;
 import java.io.IOException;
 import java.util.*;
 
-
 public class Main {
-	
+
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
-		
-		try
-		{
-			Path path = Paths.get("/home/frank/test.txt");
-			byte[] fileContentBytes = Files.readAllBytes(path);
-			String content = new String(fileContentBytes);
-			
-			System.out.println(content);
-			
-//			String content = new String(Files.readAllBytes(Paths.get("test.txt")));
-			
-			String template_1 = new String(Files.readAllBytes(Paths.get("jinja/template#1.jinja")));
-			System.out.println(template_1);
-		
+		try {
+			System.out.println("start - generate PacDriveConfigVersion.hpp");
+
 			Jinjava jinjava2 = new Jinjava();
-			
+
 			Map<String, Object> context = new HashMap<>();
-			context.put("name", "Jared");
-			
-			String template = "Hello, {{ name }}";
+			context.put("major", "1");
+			context.put("minor", "64");
+			context.put("bugfix", "4");
+			context.put("build", "3");
+
+			String template = new String(Files.readAllBytes(Paths.get("jinja/PacConfigVersion.jinja")));
+
 			String renderedTemplate = jinjava2.render(template, context);
-			
 			System.out.println(renderedTemplate);
+
+			Path pacConfigVersionPath = Paths.get("/home/frank/PacConfigVersion.hpp");
+
+			Files.write(pacConfigVersionPath, renderedTemplate.getBytes(), StandardOpenOption.CREATE,
+					StandardOpenOption.TRUNCATE_EXISTING);
 			
-			Map<String, Object> context_1 = new HashMap<>();
-			context_1.put("name", "Frank");
-			
-			String renderedTemplate_1 = jinjava2.render(template_1, context_1);
-			System.out.println(renderedTemplate_1);
-			
-			Path pathOutputFile = Paths.get("/home/frank/output.txt");
-			
-			if(false == Files.exists(pathOutputFile)){
-			  //  Files.createFile(pathOutputFile);
-			}
-			
-			Files.write(pathOutputFile, renderedTemplate_1.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-		
-		
+			System.out.println("end - generate PacDriveConfigVersion.hpp success");
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		catch (IOException e) 
-	    {
-	        e.printStackTrace();
-	    }
 	}
 
 }
