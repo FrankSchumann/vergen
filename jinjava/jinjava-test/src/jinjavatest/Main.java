@@ -22,22 +22,32 @@ public class Main {
 			System.out.println(content);
 			
 //			String content = new String(Files.readAllBytes(Paths.get("test.txt")));
+			
+			String template_1 = new String(Files.readAllBytes(Paths.get("jinja/template#1.jinja")));
+			System.out.println(template_1);
+		
+			Jinjava jinjava2 = new Jinjava();
+			
+			Map<String, Object> context = new HashMap<>();
+			context.put("name", "Jared");
+			
+			String template = "Hello, {{ name }}";
+			String renderedTemplate = jinjava2.render(template, context);
+			
+			System.out.println(renderedTemplate);
+			
+			Map<String, Object> context_1 = new HashMap<>();
+			context_1.put("name", "Frank");
+			
+			String renderedTemplate_1 = jinjava2.render(template_1, context_1);
+			System.out.println(renderedTemplate_1);
+		
+		
 		}
 		catch (IOException e) 
 	    {
 	        e.printStackTrace();
 	    }
-		
-		
-		Jinjava jinjava2 = new Jinjava();
-		
-		Map<String, Object> context = new HashMap<>();
-		context.put("name", "Jared");
-		
-		String template = "Hello, {{ name }}";
-		String renderedTemplate = jinjava2.render(template, context);
-		
-		System.out.println(renderedTemplate);
 	}
 
 }
