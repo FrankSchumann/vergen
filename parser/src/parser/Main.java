@@ -3,6 +3,8 @@ package parser;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -13,18 +15,16 @@ public class Main {
 			System.out.println("Hello World!");
 
 			String pacConfigVersion = new String(Files.readAllBytes(Paths.get("examples/PacConfigVersion.hpp")));
-			
-			System.out.println("pacConfigVersion = " + pacConfigVersion);
 
-			Parser majorParser = new Parser("FW_VERSION_MAJOR  = 1;");
-			Parser minorParser = new Parser("FW_VERSION_MINOR  = 64;");
-			Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = 4;");
-			Parser buildParser = new Parser("FW_VERSION_BUILD  = 3;");
+			Parser majorParser  = new Parser("FW_VERSION_MAJOR  = \\d;");
+			Parser minorParser  = new Parser("FW_VERSION_MAJOR  = \\d;");
+			Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d;");
+			Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d;");
 
-			int major = majorParser.parseStatement("FW_VERSION_MAJOR  = 1;");
-			int minor = minorParser.parseStatement("FW_VERSION_MINOR  = 64;");
-			int bugfix = bugfixParser.parseStatement("FW_VERSION_BUGFIX  = 4;");
-			int build = buildParser.parseStatement("FW_VERSION_BUILD  = 3;");
+			int major = majorParser.parseStatement(pacConfigVersion);
+			int minor = minorParser.parseStatement(pacConfigVersion);
+			int bugfix = bugfixParser.parseStatement(pacConfigVersion);
+			int build = buildParser.parseStatement(pacConfigVersion);
 
 			System.out.println("major = " + major);
 			System.out.println("minor = " + minor);
