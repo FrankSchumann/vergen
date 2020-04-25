@@ -13,9 +13,9 @@ public class Main
              Parser buildParser = new Parser("FW_VERSION_BUILD  = 3;");
              
              int major = majorParser.parseStatement("FW_VERSION_MAJOR  = 1;");
-             int minor = minorParser.parseStatement("FW_VERSION_MAJOR  = 64;");
-             int bugfix = bugfixParser.parseStatement("FW_VERSION_MAJOR  = 4;");
-             int build = buildParser.parseStatement("FW_VERSION_MAJOR  = 3;");
+             int minor = minorParser.parseStatement("FW_VERSION_MINOR  = 64;");
+             int bugfix = bugfixParser.parseStatement("FW_VERSION_BUGFIX  = 4;");
+             int build = buildParser.parseStatement("FW_VERSION_BUILD  = 3;");
              
              System.out.println("major = " + major);
              System.out.println("minor = " + minor);
