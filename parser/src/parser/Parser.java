@@ -13,6 +13,10 @@ public class Parser {
 	public int parseStatement(String statement) {
 		System.out.println("run");
 		
+		String line = statement.replaceAll(regEx, "");
+		
+		System.out.println("line = " + line);
+		
 		int number = detectNumber(statement);
 
 		System.out.println("number = " + number);
@@ -20,8 +24,8 @@ public class Parser {
 		return number;
 	}
 
-	private int detectNumber(String s) {
-		String number = s.replaceAll("[^0-9?]", "");
+	private int detectNumber(String input) {
+		String number = input.replaceAll("[^0-9?]", "");
 
 		return (Integer.parseInt(number));
 	}
