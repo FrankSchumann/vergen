@@ -12,14 +12,11 @@ public class Parser {
 
 	public int parseStatement(String statement) {
 		System.out.println("run");
-
-		//String number = statement.replaceAll("[^0-9?]", "");
 		
 		int number = detectNumber(statement);
 
 		System.out.println("number = " + number);
 
-		//return (Integer.parseInt(number));
 		return number;
 	}
 
