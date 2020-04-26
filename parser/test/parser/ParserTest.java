@@ -26,9 +26,33 @@ class ParserTest {
 
 	@Test
 	void parseStatementTest() {
+		
+		int major = 0;
+		int minor = 0;
+		int bugfix = 0;
+		int build = 0;
 
-		int major = parserMajor.parseStatement(testStringLong);
+		major = parserMajor.parseStatement(testStringLong);
 		assertEquals(1, major);
+		
+		minor = parserMinor.parseStatement(testStringLong);
+		assertEquals(64, minor);
+		
+		bugfix = parserBugfix.parseStatement(testStringLong);
+		assertEquals(4, bugfix);
+		
+		build = parserBuild.parseStatement(testStringLong);
+		assertEquals(3, build);
+		
+		major = parserMajor.parseStatement("const UINT8 FW_VERSION_MAJOR  = 22;\n" + "const UINT8 FW_VERSION_MINOR  = 64;\n");
+		assertEquals(22, major);
+		
+		major = parserMajor.parseStatement("const UINT8 FW_VERSION_MAJOR  = 22665;\n" + "const UINT8 FW_VERSION_MINOR  = 64;\n");
+		assertEquals(22665, major);
+		
+		minor = parserMinor.parseStatement("const UINT8 FW_VERSION_MAJOR  = 22665;\n" + "const UINT8 FW_VERSION_MINOR  = 04;\n");
+		assertEquals(4, minor);
+		
 	}
 
 	private static void setSetTestStringLong() {
