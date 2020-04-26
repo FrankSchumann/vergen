@@ -24,7 +24,7 @@ public class Parser {
 		return number;
 	}
 	
-	private String getRegExMatch(String statement)
+	private String getRegExMatch(String statement) throws ParserException
 	{
 		Pattern pattern = Pattern.compile(regEx);
 		Matcher matcher = pattern.matcher(statement);
@@ -33,6 +33,10 @@ public class Parser {
 		if (matcher.find()) {
 		    result = matcher.group();
 		    System.out.println("result = " + result);
+		}
+		else
+		{
+			throw new ParserException("regEx doesn't match");
 		}
 		
 		return result;
