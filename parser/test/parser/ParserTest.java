@@ -53,6 +53,14 @@ class ParserTest {
 		minor = parserMinor.parseStatement("const UINT8 FW_VERSION_MAJOR  = 22665;\n" + "const UINT8 FW_VERSION_MINOR  = 04;\n");
 		assertEquals(4, minor);
 		
+		Exception exception = assertThrows(ParserException.class, () -> {
+			parserMinor.parseStatement("const UINT8 FW_VERSION_BUGFIX = 4;\n" + "const UINT8 FW_VERSION_BUILD  = 3;\n" + "\n");
+	    });
+		
+		String expectedMessage = "regEx doesn't match";
+	    String actualMessage = exception.getMessage();
+	 
+	    assertTrue(actualMessage.contains(expectedMessage));
 	}
 
 	private static void setSetTestStringLong() {
