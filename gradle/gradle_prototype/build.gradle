@@ -25,6 +25,7 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'com.hubspot.jinjava:jinjava:2.5.3'
 
     // Use JUnit test framework  
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
