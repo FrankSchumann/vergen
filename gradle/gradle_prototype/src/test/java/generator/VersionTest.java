@@ -51,6 +51,7 @@ class VersionTest {
 	    assertTrue(actualMessage.contains(expectedMessage));
 	}
 
+	@Test
 	void setMinorTest() {
 		version.setMinor(0);
 		version.setMinor(2);
