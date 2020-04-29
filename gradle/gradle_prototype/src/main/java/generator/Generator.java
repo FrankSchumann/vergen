@@ -8,16 +8,14 @@ import java.nio.file.StandardOpenOption;
 import java.util.Map;
 import com.hubspot.jinjava.Jinjava;
 
+
 public class Generator {
-	Path templatePath;
-	Version version;
+	private Path templatePath;
+	private Version version;
 
-	public void setTemplateFile(String fileName) {
-		this.templatePath = Paths.get(fileName);
-	}
-
-	public Generator(String templateFileName) {
+	public Generator(String templateFileName, Version version) {
 		this.templatePath = Paths.get(templateFileName);
+		this.version = version;
 	}
 
 	public void generate(String outputFileName) {
@@ -39,10 +37,6 @@ public class Generator {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void setVersion(Version version) {
-		this.version = version;
 	}
 
 }
