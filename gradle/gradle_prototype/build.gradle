@@ -34,3 +34,7 @@ dependencies {
 application {
     mainClassName = 'gradle_prototype.MainApp'
 }
+
+test {
+    useJUnitPlatform()
+}
