@@ -57,7 +57,7 @@ class ParserTest {
 			parserMinor.parseStatement("const UINT8 FW_VERSION_BUGFIX = 4;\n" + "const UINT8 FW_VERSION_BUILD  = 3;\n" + "\n");
 	    });
 		
-		String expectedMessage = "regEx doesn't match";
+		String expectedMessage = ParserException.REGEX_NO_MATCH;
 	    String actualMessage = exception.getMessage();
 	 
 	    assertTrue(actualMessage.contains(expectedMessage));
