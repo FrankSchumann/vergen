@@ -39,7 +39,7 @@ public class Version {
 	private String getString(int number) throws VersionException
 	{
 		if (number < 0 || number > 99) {
-			throw new VersionException("Version not in range (0-99)");
+			throw new VersionException(VersionException.VERSION_NOT_IN_RANGE);
 		}
 		
 		return Integer.toString(number);

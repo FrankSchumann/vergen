@@ -59,7 +59,7 @@ class VersionTest {
 		version.setMinor(99);
 		
 		Exception exception;
-		String expectedMessage = "Version not in range (0-99)";
+		String expectedMessage = VersionException.VERSION_NOT_IN_RANGE;
 	    String actualMessage = "";
 		
 		exception= assertThrows(VersionException.class, () -> {
