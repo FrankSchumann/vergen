@@ -26,7 +26,7 @@ public class Parser {
 		if (matcher.find()) {
 			result = matcher.group();
 		} else {
-			throw new ParserException("regEx doesn't match");
+			throw new ParserException(ParserException.REGEX_NO_MATCH);
 		}
 
 		return result;
