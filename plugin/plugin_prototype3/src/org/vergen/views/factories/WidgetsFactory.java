@@ -22,11 +22,11 @@ public final class WidgetsFactory {
 	 */
 
 	public static void createLabelVersionText(Composite parent) {
-		new LabelBuilder(parent).setText(Messages.versionLabel).setBounds(34, 5, 51, 19).build();
+		new LabelBuilder(parent).setText(Messages.versionLabel).setBounds(20, 5, 51, 19).build();
 	}
 
 	public static void createLabelVersionValue(Composite parent, Widgets widgets) {
-		Label label = new LabelBuilder(parent).setText(Messages.versionValue).setBounds(130, 5, 75, 19).setStyle(SWT.BOLD).build();
+		Label label = new LabelBuilder(parent).setText(Messages.versionValue).setBounds(108, 5, 75, 19).setStyle(SWT.BOLD).build();
 		widgets.setVersionValueLabel(label);
 	}
 
@@ -36,20 +36,20 @@ public final class WidgetsFactory {
 	}
 
 	public static Label createLabelMajor(Composite parent) {
-		Label label = new LabelBuilder(parent).setText(Messages.majorLabel).setBounds(24, 46, 78, 27).build();
+		Label label = new LabelBuilder(parent).setText(Messages.majorLabel).setBounds(24, 52, 70, 19).build();
 		return label;
 	}
 
 	public static void createLabelMinor(Composite parent) {
-		new LabelBuilder(parent).setText(Messages.minorLabel).setBounds(24, 91, 78, 27).build();
+		new LabelBuilder(parent).setText(Messages.minorLabel).setBounds(24, 92, 70, 19).build();
 	}
 
 	public static void createLabelBugfix(Composite parent) {
-		new LabelBuilder(parent).setText(Messages.bugfixLabel).setBounds(24, 136, 77, 27).build();
+		new LabelBuilder(parent).setText(Messages.bugfixLabel).setBounds(24, 136, 70, 19).build();
 	}
 
 	public static void createLabelBuild(Composite parent) {
-		new LabelBuilder(parent).setText(Messages.buildLabel).setBounds(24, 181, 78, 27).build();
+		new LabelBuilder(parent).setText(Messages.buildLabel).setBounds(24, 172, 70, 19).build();
 	}
 
 	/**
@@ -57,26 +57,26 @@ public final class WidgetsFactory {
 	 */
 
 	public static void createSpinnerMajor(Composite parent, Widgets widgets, Invoker invoker) {
-		Spinner spinner = new SpinnerBuilder(parent).setWidgets(widgets).setInvoker(invoker).setBounds(108, 30, 108, 39)
+		Spinner spinner = new SpinnerBuilder(parent).setWidgets(widgets).setInvoker(invoker).setBounds(108, 46, 70, 25)
 				.build();
 		widgets.setMajorSpinner(spinner);
 	}
 
 	public static void createSpinnerMinor(Composite parent, Widgets widgets, Invoker invoker) {
-		Spinner spinner = new SpinnerBuilder(parent).setWidgets(widgets).setInvoker(invoker).setBounds(108, 79, 108, 39)
+		Spinner spinner = new SpinnerBuilder(parent).setWidgets(widgets).setInvoker(invoker).setBounds(108, 86, 70, 25)
 				.build();
 		widgets.setMinorSpinner(spinner);
 	}
 
 	public static void createSpinnerBugfix(Composite parent, Widgets widgets, Invoker invoker) {
 		Spinner spinner = new SpinnerBuilder(parent).setWidgets(widgets).setInvoker(invoker)
-				.setBounds(108, 124, 108, 39).build();
+				.setBounds(108, 126, 70, 25).build();
 		widgets.setBugfixSpinner(spinner);
 	}
 
 	public static void createSpinnerBuild(Composite parent, Widgets widgets, Invoker invoker) {
 		Spinner spinner = new SpinnerBuilder(parent).setWidgets(widgets).setInvoker(invoker)
-				.setBounds(108, 169, 108, 39).build();
+				.setBounds(108, 166, 70, 25).build();
 		widgets.setBuildSpinner(spinner);
 	}
 
@@ -87,7 +87,7 @@ public final class WidgetsFactory {
 	public static void createButtonRefresh(Composite parent, Widgets widgets, Invoker invoker) {
 		Command command = new RefreshCommand(new Receiver(widgets, parent));
 
-		new ButtonBuilder(parent).setWidgets(widgets).setInvoker(invoker).setCommand(command).setBounds(24, 235, 82, 27)
+		new ButtonBuilder(parent).setWidgets(widgets).setInvoker(invoker).setCommand(command).setBounds(24, 210, 70, 25)
 				.setText(Messages.refreshButton).build();
 	}
 
@@ -95,6 +95,6 @@ public final class WidgetsFactory {
 		Command command = new GenerateCommand(new Receiver(widgets, parent));
 
 		new ButtonBuilder(parent).setWidgets(widgets).setInvoker(invoker).setCommand(command)
-				.setBounds(134, 235, 82, 27).setText(Messages.generateButton).build();
+				.setBounds(108, 210, 70, 25).setText(Messages.generateButton).build();
 	}
 }
