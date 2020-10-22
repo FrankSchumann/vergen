@@ -24,7 +24,7 @@ const UINT8 FW_VERSION_MINOR  = {{ minor }};
 const UINT8 FW_VERSION_BUGFIX = {{ bugfix }};
 const UINT8 FW_VERSION_BUILD  = {{ build }};
 
-const UINT32 FW_VERSION_UINT32 = {{ "0x%02x%02x%02x%02x;"|format(major_val, minor_val,bugfix_val,build_val) }};
+const UINT32 FW_VERSION_UINT32 = {{ "0x%02x%02x%02x%02x;"|format(major_val, minor_val,bugfix_val,build_val) }}
 
 const char FW_VERSION_STRING[{{ fw_version_string_length }}]  = "{{ fw_version_string }}";
 const int FW_VERSION_STRING_LENGTH  = {{ fw_version_string_length }};
