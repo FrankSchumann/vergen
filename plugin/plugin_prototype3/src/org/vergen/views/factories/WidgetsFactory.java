@@ -51,6 +51,10 @@ public final class WidgetsFactory {
 	public static void createLabelBuild(Composite parent) {
 		new LabelBuilder(parent).setText(Messages.buildLabel).setBounds(24, 172, 70, 19).build();
 	}
+	
+	public static void createLabelFileLocation(Composite parent) {
+		new LabelBuilder(parent).setText(Messages.fileLocationLabel).setBounds(24, 250, 70, 100).build();
+	}
 
 	/**
 	 * Spinners
