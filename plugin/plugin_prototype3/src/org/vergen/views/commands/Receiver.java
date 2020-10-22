@@ -1,9 +1,17 @@
 package org.vergen.views.commands;
 
+
 import org.eclipse.swt.widgets.Composite;
 import org.vergen.views.Version;
 import org.vergen.views.Widgets;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.eclipse.jface.dialogs.MessageDialog;
+
+import org.vengen.parser.Parser;
 
 public class Receiver {
 
@@ -22,9 +30,31 @@ public class Receiver {
 	}
 
 	public void refresh() {
-		// TODO get version from parser
+		
+		String pacConfigVersion = null;
+		
+		try 
+		{
+			pacConfigVersion = new String(Files.readAllBytes(Paths.get("C:\\Dev\\Vergen\\examples\\PacConfigVersion.hpp")));
+			
+		} 
+		catch (IOException e) 
+		{			
+			e.printStackTrace();
+		}
 
-		Version version = new Version(1, 64, 23, 5);
+		Parser majorParser  = new Parser("FW_VERSION_MAJOR  = \\d*;");
+		Parser minorParser  = new Parser("FW_VERSION_MINOR  = \\d*;");
+		Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d*;");
+		Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d*;");
+
+		int major = majorParser.parseStatement(pacConfigVersion);
+		int minor = minorParser.parseStatement(pacConfigVersion);
+		int bugfix = bugfixParser.parseStatement(pacConfigVersion);
+		int build = buildParser.parseStatement(pacConfigVersion);
+
+
+		Version version = new Version(major, minor, bugfix, build);
 
 		widgets.setVersion(version);
 	}
