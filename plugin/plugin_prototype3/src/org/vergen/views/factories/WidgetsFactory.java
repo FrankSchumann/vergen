@@ -1,6 +1,7 @@
 package org.vergen.views.factories;
 
 import org.eclipse.swt.widgets.Spinner;
+import org.eclipse.swt.widgets.Text;
 import org.vergen.views.Messages;
 import org.vergen.views.Widgets;
 import org.vergen.views.builders.ButtonBuilder;
@@ -101,4 +102,19 @@ public final class WidgetsFactory {
 		new ButtonBuilder(parent).setWidgets(widgets).setInvoker(invoker).setCommand(command)
 				.setBounds(108, 210, 70, 25).setText(Messages.generateButton).build();
 	}
+	
+	/**
+	 * TextBox
+	 */
+	
+	public static void createHeaderFileLocation(Composite parent){
+		
+
+		final Text text = new Text(parent, SWT.BORDER);
+		text.setBounds(108, 250, 70, 25);
+		
+
+	}
+	
+	 
 }

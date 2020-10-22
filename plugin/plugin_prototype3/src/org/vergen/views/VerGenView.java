@@ -73,9 +73,11 @@ public class VerGenView extends ViewPart {
 		WidgetsFactory.createButtonGenerate(parent, widgets, invoker);
 		
 		WidgetsFactory.createLabelFileLocation(parent);
+		WidgetsFactory.createHeaderFileLocation(parent);
 
 		refreshAction = ActionsFactory.createRefreshAction(parent, widgets, invoker);
 		contributeToActionBars();
+		
 	}
 
 	private void contributeToActionBars() {
