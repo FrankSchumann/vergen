@@ -18,7 +18,8 @@ public class Receiver {
 
 	private Widgets widgets;
 	private Composite parent;
-	private Configuration configuration;
+	private static String resultFilename = null;
+	private static String templateFilename = null;
 
 	public Receiver(Widgets widgets, Composite parent) {
 		this.widgets = widgets;
@@ -33,11 +34,12 @@ public class Receiver {
 
 	public void refresh() {
 		
-		configuration  = new Configuration("D:\\configFile.txt");
+		Configuration configuration  = new Configuration("D:\\configFile.txt");
 		
 		configuration.parse();
 		
-		String resultFilename = configuration.getResultFilename();
+		templateFilename = configuration.getTemplateFilename();
+		resultFilename = configuration.getResultFilename();
 			
 		try 
 		{
@@ -68,9 +70,6 @@ public class Receiver {
 
 	public void generate() {
 		Version version = widgets.getVersion();
-		
-		String templateFilename = configuration.getTemplateFilename();
-		String resultFilename = configuration.getResultFilename();
 
 		Generator generator = new Generator(templateFilename, resultFilename);
     	
