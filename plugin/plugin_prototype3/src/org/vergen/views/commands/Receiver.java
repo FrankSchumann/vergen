@@ -3,6 +3,7 @@ package org.vergen.views.commands;
 
 import org.eclipse.swt.widgets.Composite;
 import org.vergen.generator.Generator;
+import org.vergen.configuration.Configuration;
 import org.vergen.parser.Parser;
 import org.vergen.views.Version;
 import org.vergen.views.Widgets;
@@ -17,6 +18,7 @@ public class Receiver {
 
 	private Widgets widgets;
 	private Composite parent;
+	private Configuration configuration;
 
 	public Receiver(Widgets widgets, Composite parent) {
 		this.widgets = widgets;
@@ -31,39 +33,44 @@ public class Receiver {
 
 	public void refresh() {
 		
-		String resultFilename = null;
+		configuration  = new Configuration("D:\\configFile.txt");
 		
+		configuration.parse();
+		
+		String resultFilename = configuration.getResultFilename();
+			
 		try 
 		{
-			resultFilename = new String(Files.readAllBytes(Paths.get("D:\\PacConfigVersion.hpp")));
+			String resultFile = new String(Files.readAllBytes(Paths.get(resultFilename)));
 			
+			Parser majorParser  = new Parser("FW_VERSION_MAJOR  = \\d*;");
+			Parser minorParser  = new Parser("FW_VERSION_MINOR  = \\d*;");
+			Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d*;");
+			Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d*;");
+
+			int major = majorParser.parseStatement(resultFile);
+			int minor = minorParser.parseStatement(resultFile);
+			int bugfix = bugfixParser.parseStatement(resultFile);
+			int build = buildParser.parseStatement(resultFile);
+
+
+			Version version = new Version(major, minor, bugfix, build);
+
+			widgets.setVersion(version);
+		
+		
 		} 
 		catch (IOException e) 
 		{			
 			e.printStackTrace();
 		}
-
-		Parser majorParser  = new Parser("FW_VERSION_MAJOR  = \\d*;");
-		Parser minorParser  = new Parser("FW_VERSION_MINOR  = \\d*;");
-		Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d*;");
-		Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d*;");
-
-		int major = majorParser.parseStatement(resultFilename);
-		int minor = minorParser.parseStatement(resultFilename);
-		int bugfix = bugfixParser.parseStatement(resultFilename);
-		int build = buildParser.parseStatement(resultFilename);
-
-
-		Version version = new Version(major, minor, bugfix, build);
-
-		widgets.setVersion(version);
 	}
 
 	public void generate() {
 		Version version = widgets.getVersion();
 		
-		String templateFilename = "D:\\git\\vergen\\jinja\\PacConfigVersion.jinja";
-		String resultFilename = "D:\\PacConfigVersion.hpp";
+		String templateFilename = configuration.getTemplateFilename();
+		String resultFilename = configuration.getResultFilename();
 
 		Generator generator = new Generator(templateFilename, resultFilename);
     	
