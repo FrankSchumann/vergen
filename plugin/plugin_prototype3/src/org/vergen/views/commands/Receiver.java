@@ -31,11 +31,11 @@ public class Receiver {
 
 	public void refresh() {
 		
-		String pacConfigVersion = null;
+		String resultFilename = null;
 		
 		try 
 		{
-			pacConfigVersion = new String(Files.readAllBytes(Paths.get("D:\\PacConfigVersion.hpp")));
+			resultFilename = new String(Files.readAllBytes(Paths.get("D:\\PacConfigVersion.hpp")));
 			
 		} 
 		catch (IOException e) 
@@ -48,10 +48,10 @@ public class Receiver {
 		Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d*;");
 		Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d*;");
 
-		int major = majorParser.parseStatement(pacConfigVersion);
-		int minor = minorParser.parseStatement(pacConfigVersion);
-		int bugfix = bugfixParser.parseStatement(pacConfigVersion);
-		int build = buildParser.parseStatement(pacConfigVersion);
+		int major = majorParser.parseStatement(resultFilename);
+		int minor = minorParser.parseStatement(resultFilename);
+		int bugfix = bugfixParser.parseStatement(resultFilename);
+		int build = buildParser.parseStatement(resultFilename);
 
 
 		Version version = new Version(major, minor, bugfix, build);
@@ -62,10 +62,10 @@ public class Receiver {
 	public void generate() {
 		Version version = widgets.getVersion();
 		
-		String templateFileName = "D:\\git\\vergen\\jinja\\PacConfigVersion.jinja";
-		String resultFileName = "D:\\PacConfigVersion.hpp";
+		String templateFilename = "D:\\git\\vergen\\jinja\\PacConfigVersion.jinja";
+		String resultFilename = "D:\\PacConfigVersion.hpp";
 
-		Generator generator = new Generator(templateFileName, resultFileName);
+		Generator generator = new Generator(templateFilename, resultFilename);
     	
 		int major = version.getMajor();
 		int minor = version.getMinor();
@@ -79,7 +79,7 @@ public class Receiver {
     	
     	generator.render();
 
-		String message = "File " + resultFileName + " generated with version " + version.toString();
+		String message = "File " + resultFilename + " generated with version " + version.toString();
 
 		showMessage(parent, message);
 	};
