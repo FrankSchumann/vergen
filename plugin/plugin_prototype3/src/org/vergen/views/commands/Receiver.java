@@ -3,6 +3,7 @@ package org.vergen.views.commands;
 
 import org.eclipse.swt.widgets.Composite;
 import org.vergen.generator.Generator;
+import org.vergen.parser.Parser;
 import org.vergen.views.Version;
 import org.vergen.views.Widgets;
 
@@ -11,8 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import org.eclipse.jface.dialogs.MessageDialog;
-
-import org.vergen.parser2.Parser;
 
 public class Receiver {
 
@@ -36,7 +35,7 @@ public class Receiver {
 		
 		try 
 		{
-			pacConfigVersion = new String(Files.readAllBytes(Paths.get("C:\\Dev\\Vergen\\examples\\PacConfigVersion.hpp")));
+			pacConfigVersion = new String(Files.readAllBytes(Paths.get("D:\\PacConfigVersion.hpp")));
 			
 		} 
 		catch (IOException e) 
