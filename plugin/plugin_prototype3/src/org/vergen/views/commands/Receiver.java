@@ -2,6 +2,7 @@ package org.vergen.views.commands;
 
 
 import org.eclipse.swt.widgets.Composite;
+import org.vergen.generator.Generator;
 import org.vergen.views.Version;
 import org.vergen.views.Widgets;
 
@@ -11,7 +12,7 @@ import java.nio.file.Paths;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 
-import org.vengen.parser.Parser;
+import org.vergen.parser2.Parser;
 
 public class Receiver {
 
@@ -63,10 +64,29 @@ public class Receiver {
 		Version version = widgets.getVersion();
 
 		// TODO add generator
+/*		Test test = new Test();
+		
+		test.run();
+		*/
+		
+		String templateFileName = "D:\\git\\vergen\\jinja\\PacConfigVersion.jinja";
+		String resultFileName = "D:\\PacConfigVersion.hpp";
 
-		String result = "PacConfigVersion.hpp";
-		String versionTmp = version.toString();
-		String message = "File " + result + " generated with version " + versionTmp;
+		Generator generator = new Generator(templateFileName, resultFileName);
+    	
+		int major = version.getMajor();
+		int minor = version.getMinor();
+		int bugfix = version.getBugfix();
+		int build = version.getBuild();
+
+		generator.setMajor(major);
+    	generator.setMinor(minor);
+    	generator.setBugfix(bugfix);
+    	generator.setBuild(build);
+    	
+    	generator.render();
+
+		String message = "File " + resultFileName + " generated with version " + version.toString();
 
 		showMessage(parent, message);
 	};
