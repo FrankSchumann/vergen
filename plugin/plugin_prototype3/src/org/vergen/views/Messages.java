@@ -14,6 +14,7 @@ public class Messages extends NLS {
 	public static String minorLabel;
 	public static String bugfixLabel;
 	public static String buildLabel;
+	public static String fileLocationLabel;
 
 	public static String refreshButton;
 	public static String generateButton;

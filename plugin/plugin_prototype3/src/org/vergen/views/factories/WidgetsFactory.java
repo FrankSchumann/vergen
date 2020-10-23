@@ -1,6 +1,7 @@
 package org.vergen.views.factories;
 
 import org.eclipse.swt.widgets.Spinner;
+import org.eclipse.swt.widgets.Text;
 import org.vergen.views.Messages;
 import org.vergen.views.Widgets;
 import org.vergen.views.builders.ButtonBuilder;
@@ -51,6 +52,10 @@ public final class WidgetsFactory {
 	public static void createLabelBuild(Composite parent) {
 		new LabelBuilder(parent).setText(Messages.buildLabel).setBounds(24, 172, 70, 19).build();
 	}
+	
+	public static void createLabelFileLocation(Composite parent) {
+		new LabelBuilder(parent).setText(Messages.fileLocationLabel).setBounds(24, 250, 70, 100).build();
+	}
 
 	/**
 	 * Spinners
@@ -97,4 +102,19 @@ public final class WidgetsFactory {
 		new ButtonBuilder(parent).setWidgets(widgets).setInvoker(invoker).setCommand(command)
 				.setBounds(108, 210, 70, 25).setText(Messages.generateButton).build();
 	}
+	
+	/**
+	 * TextBox
+	 */
+	
+	public static void createHeaderFileLocation(Composite parent){
+		
+
+		final Text text = new Text(parent, SWT.BORDER);
+		text.setBounds(108, 250, 70, 25);
+		
+
+	}
+	
+	 
 }
