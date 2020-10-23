@@ -62,12 +62,6 @@ public class Receiver {
 
 	public void generate() {
 		Version version = widgets.getVersion();
-
-		// TODO add generator
-/*		Test test = new Test();
-		
-		test.run();
-		*/
 		
 		String templateFileName = "D:\\git\\vergen\\jinja\\PacConfigVersion.jinja";
 		String resultFileName = "D:\\PacConfigVersion.hpp";
