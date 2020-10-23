@@ -63,7 +63,7 @@ public class SamplePreferencePage2
 		Group grpHhhh = new Group(composite, SWT.NONE);
 		grpHhhh.setText("hhhh");
 		
-		return composite;;
+		return composite;
 	}
 
 	/* (non-Javadoc)
