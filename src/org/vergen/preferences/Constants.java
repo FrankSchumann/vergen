@@ -18,8 +18,8 @@ public class Constants {
 	public static final String DEF_BUILD_REGEX = "FW_VERSION_BUILD  \\= \\\\d*;";
 	
 	public static final String PREF_TEMPLATE = "templatePreference";
-	public static final String DEF_TEMPLATE = "/home/frank/git/vergen/jinja/PacConfigVersion.jinja";
+	public static final String DEF_TEMPLATE = "D:\\svn\\se-controls\\trunk\\WorkbenchProjects\\Modules\\Firmware\\src\\PacConfig\\Header\\PacConfigVersion.jinja";
 	
 	public static final String PREF_RESULT = "resultPreference";
-	public static final String DEF_RESULT = "/home/frank/git/vergen/examples/PacConfigVersion.hpp";
+	public static final String DEF_RESULT = "D:\\svn\\se-controls\\trunk\\WorkbenchProjects\\Modules\\Firmware\\src\\PacConfig\\Header\\PacConfigVersion.hpp";
 }
