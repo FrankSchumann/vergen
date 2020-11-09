@@ -49,7 +49,8 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 				@Override
 				protected void valueChanged(boolean oldValue, boolean newValue) {
 					super.valueChanged(oldValue, newValue);
-					advancedSettingsValueChanged(newValue);
+//					advancedSettingsValueChanged(newValue);
+					setEnabledStringFieldEditors(newValue);
 				}
 			};
 
@@ -111,6 +112,13 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		} else {
 			disableStringFieldEditors();
 		}
+	}
+	
+	private void setEnabledStringFieldEditors(boolean enabled) {
+		majorStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
+		minorStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
+		bugfixStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
+		buildStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
 	}
 
 	private void enableStringFieldEditors() {
