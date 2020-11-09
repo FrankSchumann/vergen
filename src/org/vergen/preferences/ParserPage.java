@@ -113,19 +113,4 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		bugfixStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
 		buildStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
 	}
-
-	private void enableStringFieldEditors() {
-		majorStringFieldEditor.setEnabled(true, this.getFieldEditorParent());
-		minorStringFieldEditor.setEnabled(true, this.getFieldEditorParent());
-		bugfixStringFieldEditor.setEnabled(true, this.getFieldEditorParent());
-		buildStringFieldEditor.setEnabled(true, this.getFieldEditorParent());
-	}
-
-	private void disableStringFieldEditors() {
-		majorStringFieldEditor.setEnabled(false, this.getFieldEditorParent());
-		minorStringFieldEditor.setEnabled(false, this.getFieldEditorParent());
-		bugfixStringFieldEditor.setEnabled(false, this.getFieldEditorParent());
-		buildStringFieldEditor.setEnabled(false, this.getFieldEditorParent());
-	}
-
 }
