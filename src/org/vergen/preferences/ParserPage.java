@@ -87,12 +87,13 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		{
 			org.vergen.preferences.Preferences preferences = new Preferences();
 			boolean editSettingsPreference = preferences.getEditSettingsPreference();
-			if (editSettingsPreference == true) {
-				enableStringFieldEditors();
-			}
-			else {
-				disableStringFieldEditors();
-			}
+			setEnabledStringFieldEditors(editSettingsPreference);
+//			if (editSettingsPreference == true) {
+//				enableStringFieldEditors();
+//			}
+//			else {
+//				disableStringFieldEditors();
+//			}
 			
 		}
 	}
@@ -104,14 +105,6 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		editSettingsBooleanFieldEditor.loadDefault();
 //		disableStringFieldEditors();
 		super.performDefaults();
-	}
-
-	private void advancedSettingsValueChanged(boolean newValue) {
-		if (true == newValue) {
-			enableStringFieldEditors();
-		} else {
-			disableStringFieldEditors();
-		}
 	}
 	
 	private void setEnabledStringFieldEditors(boolean enabled) {
