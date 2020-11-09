@@ -33,7 +33,6 @@ public class Receiver {
 		
 		String resultFilename = preferences.getResultFilename();
 		
-		// TODO read regex from configuration/preferences
 		String majorRegex = preferences.getMajorRegex();
 		String minorRegex = preferences.getMinorRegex();
 		String bugfixRegex = preferences.getBugfixRegex();
@@ -42,11 +41,6 @@ public class Receiver {
 		try 
 		{
 			String resultFile = new String(Files.readAllBytes(Paths.get(resultFilename)));
-			
-//			Parser majorParser  = new Parser("FW_VERSION_MAJOR  = \\d*;");
-//			Parser minorParser  = new Parser("FW_VERSION_MINOR  = \\d*;");
-//			Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d*;");
-//			Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d*;");
 			
 			Parser majorParser  = new Parser(majorRegex);
 			Parser minorParser  = new Parser(minorRegex);
