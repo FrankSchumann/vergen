@@ -39,17 +39,12 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 	 */
 	public void createFieldEditors() {
 		{
-
-//			editSettingsBooleanFieldEditor = new BooleanFieldEditor(PreferenceConstants.PREF_EDIT_SETTINGS, "Edit settings", BooleanFieldEditor.DEFAULT,
-//					getFieldEditorParent());
-
-			editSettingsBooleanFieldEditor = new BooleanFieldEditor(Constants.PREF_EDIT_SETTINGS, Messages.editSettingsLabelText,
+				editSettingsBooleanFieldEditor = new BooleanFieldEditor(Constants.PREF_EDIT_SETTINGS, Messages.editSettingsLabelText,
 					BooleanFieldEditor.DEFAULT, getFieldEditorParent()) {
 
 				@Override
 				protected void valueChanged(boolean oldValue, boolean newValue) {
 					super.valueChanged(oldValue, newValue);
-//					advancedSettingsValueChanged(newValue);
 					setEnabledStringFieldEditors(newValue);
 				}
 			};
@@ -88,13 +83,6 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 			org.vergen.preferences.Preferences preferences = new Preferences();
 			boolean editSettingsPreference = preferences.getEditSettingsPreference();
 			setEnabledStringFieldEditors(editSettingsPreference);
-//			if (editSettingsPreference == true) {
-//				enableStringFieldEditors();
-//			}
-//			else {
-//				disableStringFieldEditors();
-//			}
-			
 		}
 	}
 	
