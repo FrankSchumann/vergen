@@ -1,17 +1,17 @@
 package org.vergen.views.commands;
 
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Composite;
+import org.osgi.service.prefs.Preferences;
 import org.vergen.core.Generator;
 import org.vergen.core.Parser;
 import org.vergen.core.Version;
 import org.vergen.views.Widgets;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import org.eclipse.jface.dialogs.MessageDialog;
 
 public class Receiver {
 
@@ -34,9 +34,12 @@ public class Receiver {
 	public void refresh() {
 		
 		// TODO read result file name from configuration/preferences
+		Preferences preferences = InstanceScope.INSTANCE.getNode("org.vergen");
+		
+		templateFilename = preferences.get("templatePreference", "Hallo");
 		
 		// TODO remove static file names
-		templateFilename = "D:\\git\\playground\\jinja\\PacConfigVersion.jinja";
+		//templateFilename = "D:\\git\\playground\\jinja\\PacConfigVersion.jinja";
 		resultFilename = "D:\\git\\playground\\examples\\PacConfigVersion.hpp";
 		
 		// TODO read regex from configuration/preferences
