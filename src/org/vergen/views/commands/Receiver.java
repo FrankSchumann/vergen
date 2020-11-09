@@ -37,10 +37,11 @@ public class Receiver {
 		Preferences preferences = InstanceScope.INSTANCE.getNode("org.vergen");
 		
 		templateFilename = preferences.get("templatePreference", "Hallo");
+		resultFilename = preferences.get("resultPreference", "Hallo");
 		
 		// TODO remove static file names
 		//templateFilename = "D:\\git\\playground\\jinja\\PacConfigVersion.jinja";
-		resultFilename = "D:\\git\\playground\\examples\\PacConfigVersion.hpp";
+		//resultFilename = "D:\\git\\playground\\examples\\PacConfigVersion.hpp";
 		
 		// TODO read regex from configuration/preferences
 			
