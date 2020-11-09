@@ -20,11 +20,6 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		setDescription(Messages.parserDescription);
 	}
 
-	/**
-	 * Creates the field editors. Field editors are abstractions of the common GUI
-	 * blocks needed to manipulate various types of preferences. Each field editor
-	 * knows how to save and restore itself.
-	 */
 	public void createFieldEditors() {
 		editSettingsBooleanFieldEditor = new BooleanFieldEditor(Constants.PREF_EDIT_SETTINGS,
 				Messages.editSettingsLabelText, BooleanFieldEditor.DEFAULT, getFieldEditorParent()) {
@@ -65,7 +60,7 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		boolean editSettingsPreference = preferences.getEditSettingsPreference();
 		setEnabledStringFieldEditors(editSettingsPreference);
 	}
-	
+
 	public void init(IWorkbench workbench) {
 	}
 
@@ -74,7 +69,7 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		setEnabledStringFieldEditors(false);
 		super.performDefaults();
 	}
-	
+
 	private void setEnabledStringFieldEditors(boolean enabled) {
 		majorStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
 		minorStringFieldEditor.setEnabled(enabled, this.getFieldEditorParent());
