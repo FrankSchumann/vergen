@@ -18,8 +18,8 @@ public class Receiver {
 
 	private Widgets widgets;
 	private Composite parent;
-	private static String resultFilename = null;
-	private static String templateFilename = null;
+//	private static String resultFilename = null;
+//	private static String templateFilename = null;
 
 	public Receiver(Widgets widgets, Composite parent) {
 		this.widgets = widgets;
@@ -41,8 +41,7 @@ public class Receiver {
 //		resultFilename = preferences.get("resultPreference", "Hallo");
 		
 		Preferences preferences = new Preferences();
-		templateFilename = preferences.getTemplateFilename();
-		resultFilename = preferences.getResultFilename();
+		String resultFilename = preferences.getResultFilename();
 		
 		// TODO remove static file names
 		//templateFilename = "D:\\git\\playground\\jinja\\PacConfigVersion.jinja";
@@ -78,7 +77,10 @@ public class Receiver {
 	}
 
 	public void generate() {
-		// TODO read templateFilename and resultFilename from preferences
+		Preferences preferences = new Preferences();
+		String templateFilename = preferences.getTemplateFilename();
+		String resultFilename = preferences.getResultFilename();
+
 		Generator generator = new Generator(templateFilename, resultFilename);
 
 		Version version = widgets.getVersion();
