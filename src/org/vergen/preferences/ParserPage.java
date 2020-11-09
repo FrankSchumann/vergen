@@ -29,7 +29,6 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 		setTitle(Messages.parserTitle);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		setDescription(Messages.parserDescription);
-//		noDefaultButton();
 	}
 
 	/**
