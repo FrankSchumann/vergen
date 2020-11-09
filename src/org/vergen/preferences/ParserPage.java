@@ -90,7 +90,7 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 
 	protected void performDefaults() {
 		editSettingsBooleanFieldEditor.loadDefault();
-//		disableStringFieldEditors();
+		setEnabledStringFieldEditors(false);
 		super.performDefaults();
 	}
 	
