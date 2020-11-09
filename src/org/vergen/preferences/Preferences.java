@@ -20,6 +20,11 @@ public class Preferences {
 		return resultFilename;
 	}
 	
+	public boolean getEditSettingsPreference() {
+		boolean editSettingsPreference = osgiPreferences.getBoolean(Constants.PREF_EDIT_SETTINGS, Constants.DEF_EDIT_SETTINGS);
+		return editSettingsPreference;
+	}
+	
 	public String getMajorRegex() {
 		String majorRegex = osgiPreferences.get(Constants.PREF_MAJOR_REGEX, Constants.DEF_MAJOR_REGEX);
 		return majorRegex;
