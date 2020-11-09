@@ -49,7 +49,7 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 				@Override
 				protected void valueChanged(boolean oldValue, boolean newValue) {
 					super.valueChanged(oldValue, newValue);
-					advancedSettingsValueChanged(oldValue, newValue);
+					advancedSettingsValueChanged(newValue);
 				}
 			};
 
@@ -99,22 +99,13 @@ public class ParserPage extends FieldEditorPreferencePage implements IWorkbenchP
 	public void init(IWorkbench workbench) {
 	}
 
-//	protected void performDefaults() {
-////		editSettingsBooleanFieldEditor.loadDefault();
-//		boolean editSettings = editSettingsBooleanFieldEditor.getBooleanValue();
-//		if (editSettings == true)
-//		{
-//			enableStringFieldEditors();
-//		}
-//		else
-//		{
-//			disableStringFieldEditors();
-//		}
-//		System.out.println("performDefaults !!!!");
-//		super.performDefaults();
-//	}
+	protected void performDefaults() {
+		editSettingsBooleanFieldEditor.loadDefault();
+//		disableStringFieldEditors();
+		super.performDefaults();
+	}
 
-	private void advancedSettingsValueChanged(boolean oldValue, boolean newValue) {
+	private void advancedSettingsValueChanged(boolean newValue) {
 		if (true == newValue) {
 			enableStringFieldEditors();
 		} else {
