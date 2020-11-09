@@ -20,4 +20,24 @@ public class Preferences {
 		return resultFilename;
 	}
 	
+	public String getMajorRegex() {
+		String majorRegex = osgiPreferences.get(Constants.PREF_MAJOR_REGEX, Constants.DEF_MAJOR_REGEX);
+		return majorRegex;
+	}
+	
+	public String getMinorRegex() {
+		String minorRegex = osgiPreferences.get(Constants.PREF_MINOR_REGEX, Constants.DEF_MINOR_REGEX);
+		return minorRegex;
+	}
+	
+	public String getBugfixRegex() {
+		String bugfixRegex = osgiPreferences.get(Constants.PREF_BUGFIX_REGEX, Constants.DEF_BUGFIX_REGEX);
+		return bugfixRegex;
+	}
+	
+	public String getBuildRegex() {
+		String buildRegex = osgiPreferences.get(Constants.PREF_BUILD_REGEX, Constants.DEF_BUILD_REGEX);
+		return buildRegex;
+	}
+	
 }

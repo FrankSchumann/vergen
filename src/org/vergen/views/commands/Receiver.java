@@ -4,6 +4,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Composite;
 import org.vergen.core.Generator;
 import org.vergen.core.Parser;
+import org.vergen.core.ParserException;
 import org.vergen.core.Version;
 import org.vergen.views.Widgets;
 import org.vergen.preferences.Preferences;
@@ -29,18 +30,28 @@ public class Receiver {
 
 	public void refresh() {
 		Preferences preferences = new Preferences();
+		
 		String resultFilename = preferences.getResultFilename();
 		
 		// TODO read regex from configuration/preferences
+		String majorRegex = preferences.getMajorRegex();
+		String minorRegex = preferences.getMinorRegex();
+		String bugfixRegex = preferences.getBugfixRegex();
+		String buildRegex = preferences.getBugfixRegex();
 			
 		try 
 		{
 			String resultFile = new String(Files.readAllBytes(Paths.get(resultFilename)));
 			
-			Parser majorParser  = new Parser("FW_VERSION_MAJOR  = \\d*;");
-			Parser minorParser  = new Parser("FW_VERSION_MINOR  = \\d*;");
-			Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d*;");
-			Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d*;");
+//			Parser majorParser  = new Parser("FW_VERSION_MAJOR  = \\d*;");
+//			Parser minorParser  = new Parser("FW_VERSION_MINOR  = \\d*;");
+//			Parser bugfixParser = new Parser("FW_VERSION_BUGFIX = \\d*;");
+//			Parser buildParser  = new Parser("FW_VERSION_BUILD  = \\d*;");
+			
+			Parser majorParser  = new Parser(majorRegex);
+			Parser minorParser  = new Parser(minorRegex);
+			Parser bugfixParser = new Parser(bugfixRegex);
+			Parser buildParser  = new Parser(buildRegex);
 
 			int major = majorParser.parseStatement(resultFile);
 			int minor = minorParser.parseStatement(resultFile);
@@ -54,6 +65,10 @@ public class Receiver {
 		} 
 		catch (IOException e) 
 		{			
+			e.printStackTrace();
+		}
+		catch (ParserException e) 
+		{
 			e.printStackTrace();
 		}
 	}
